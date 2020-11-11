@@ -1,31 +1,39 @@
 ﻿namespace Charater.Ezreal
 {
+    using KeyControl;
     using UnityEngine;
     public class EzrealSkillController : BaseSkillController
     {
         public override void SkillFirst()
         {
-            throw new System.NotImplementedException();
+            Debug.Log($"1");
         }
 
         public override void SkillSecond()
         {
-            throw new System.NotImplementedException();
+            Debug.Log($"2");
         }
 
         public override void SkillThird()
         {
-            throw new System.NotImplementedException();
+            Debug.Log($"3");
         }
 
         public override void SkillUltimate()
         {
-            throw new System.NotImplementedException();
+            Debug.Log($"4");
         }
 
         protected override void Update()
         {
-            throw new System.NotImplementedException();
+            if (Input.GetKeyDown(DefaultKeyController.allKeySkills[0]))
+                SkillFirst();
+            if (Input.GetKeyDown(DefaultKeyController.allKeySkills[1]))
+                SkillSecond();            
+            if (Input.GetKeyDown(DefaultKeyController.allKeySkills[2]))
+                SkillThird();            
+            if (Input.GetKeyDown(DefaultKeyController.allKeySkills[3]))
+                SkillUltimate();
         }
     }
 }

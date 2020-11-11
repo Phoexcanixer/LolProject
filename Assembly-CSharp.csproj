@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{951E49DA-A1CF-9184-B5DC-26CFBA5B1237}</ProjectGuid>
+    <ProjectGuid>{3326F957-2238-6E1F-E1C6-54732C471895}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -55,12 +55,12 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\$ChampionSkill\Scripts\Charater\$BaseScript\DummyManage.cs" />
-    <Compile Include="Assets\$ChampionSkill\Scripts\Charater\$BaseScript\CharaterController.cs" />
     <Compile Include="Assets\$ChampionSkill\Scripts\Charater\$BaseScript\BaseSkillController.cs" />
     <Compile Include="Assets\$ChampionSkill\Scripts\KeyController\DefaultKeyController.cs" />
     <Compile Include="Assets\$ChampionSkill\Scripts\Charater\$BaseScript\AnimationController.cs" />
     <Compile Include="Assets\$ChampionSkill\Scripts\Charater\Ezreal\EzrealSkillController.cs" />
+    <Compile Include="Assets\$ChampionSkill\Scripts\Charater\$BaseScript\DummyManage.cs" />
+    <Compile Include="Assets\$ChampionSkill\Scripts\Charater\$BaseScript\CharaterController.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\Tiny Chess Stone Chess Piece\Readme Eng.txt" />
