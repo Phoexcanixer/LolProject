@@ -10,7 +10,18 @@
 
         AnimationController _animationController;
         Coroutine _moveCrt = null;
-        void Awake() => _animationController = GetComponent<AnimationController>();
+        void Awake()
+        {
+            _animationController = GetComponent<AnimationController>();
+            Ezreal.EzrealSkillController.callRoutine = () =>
+            {
+                if (_moveCrt != null)
+                    StopCoroutine(_moveCrt);
+
+                _animationController.Idle();
+            };
+        }
+
         void Update()
         {
             if (Input.GetKeyDown(DefaultKeyController.move))

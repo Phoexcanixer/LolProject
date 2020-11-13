@@ -1,21 +1,14 @@
 ﻿namespace Dummy
 {
-    using System.Collections;
-    using System.Collections.Generic;
     using UnityEngine;
 
-    public class DummyManage : MonoBehaviour
+    public class DummyManage : MonoBehaviour, ISide
     {
-        // Start is called before the first frame update
-        void Start()
-        {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
+        public ESidePlayer eSidePlayer { get; set; }
+        void Awake() => eSidePlayer = ESidePlayer.AllEnemy;
+        //protected void OnParticleCollision(GameObject other)
+        //{
+        //    Debug.Log($"other: {other.name}");
+        //}
     }
 }

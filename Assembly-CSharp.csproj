@@ -8,7 +8,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <ProjectGuid>{3326F957-2238-6E1F-E1C6-54732C471895}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -57,13 +58,19 @@
   <ItemGroup>
     <Compile Include="Assets\$ChampionSkill\Scripts\Charater\$BaseScript\BaseSkillController.cs" />
     <Compile Include="Assets\$ChampionSkill\Scripts\KeyController\DefaultKeyController.cs" />
+    <Compile Include="Assets\$ChampionSkill\Scripts\Charater\Ezreal\Skills\MyticShort.cs" />
     <Compile Include="Assets\$ChampionSkill\Scripts\Charater\$BaseScript\AnimationController.cs" />
     <Compile Include="Assets\$ChampionSkill\Scripts\Charater\Ezreal\EzrealSkillController.cs" />
     <Compile Include="Assets\$ChampionSkill\Scripts\Charater\$BaseScript\DummyManage.cs" />
     <Compile Include="Assets\$ChampionSkill\Scripts\Charater\$BaseScript\CharaterController.cs" />
+    <Compile Include="Assets\$ChampionSkill\Scripts\Charater\Ezreal\Skills\EssenceFlux.cs" />
+    <Compile Include="Assets\$ChampionSkill\Scripts\AllClass.cs" />
+    <Compile Include="Assets\$ChampionSkill\Scripts\Charater\$BaseScript\Skill\BaseSkill.cs" />
+    <Compile Include="Assets\$ChampionSkill\Scripts\Charater\Ezreal\Skills\ArcaneShift.cs" />
   </ItemGroup>
   <ItemGroup>
-     <None Include="Assets\Tiny Chess Stone Chess Piece\Readme Eng.txt" />
+    <None Include="Assets\Tiny Chess Stone Chess Piece\Readme Eng.txt" />
+    <None Include="ClassDiagram1.cd" />
     <Reference Include="UnityEngine">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2020.1.5f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>

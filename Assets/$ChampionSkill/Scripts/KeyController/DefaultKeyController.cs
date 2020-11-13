@@ -11,5 +11,6 @@
 
         // Mouse //
         public static KeyCode move = KeyCode.Mouse1;
+
     }
 }
