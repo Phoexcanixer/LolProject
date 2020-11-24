@@ -1,26 +1,22 @@
 ﻿namespace Charater.Ezreal
 {
-    using KeyControl;
-    using UnityEngine;
-    using Common.Cast;
     using Charater.Ezreal.Skill;
+    using Common.Cast;
+    using KeyControl;
     using System;
     using System.Collections;
+    using System.Linq;
+    using UnityEngine;
     using View;
-    using System.Collections.Generic;
 
     public class EzrealController : BaseStatusCharaterController
     {
         public static Action CallBackPassive;
-
         [Header("EzrealIncrease")]
         public float timePassive;
         public int passiveStack;
-        public Sprite[] allIconBuff;
         public float IncreaseAspd { get => (3 * baseStatusChar.aspd) / 100; }
-
         Coroutine _timePassive = null;
-
         protected override void Awake()
         {
             base.Awake();
@@ -38,9 +34,11 @@
                     {
                         EzrealAuto _ezAuto = Instantiate(atkObject, spawnPointSkill.position, Quaternion.identity).AddComponent<EzrealAuto>();
                         _ezAuto.eSidePlayer = eSidePlayer;
-                        _ezAuto.target = hitColliders[0].transform;
+
+                        float _minDist = hitColliders.Min(item => Vector3.Distance(item.transform.position, transform.position));
+                        _ezAuto.target = hitColliders.Where(item => Vector3.Distance(item.transform.position, transform.position) <= _minDist).First().transform;
                         transform.LookAt(_ezAuto.target);
-                        abillity.delayAtk = baseStatusChar.atkRate;
+                        abillity.delayAtk = TotalStatus.atkRate;
                     }
                     else
                         abillity.isAtk = false;
@@ -66,9 +64,9 @@
 
             IEnumerator IEPassive()
             {
-                increaseStatus += _status;
+                temporaryStatus += _status;
                 timePassive = 10;
-                var _buff = UIManage.instant.uiStatus.CheckBuff(allIconBuff[0], passiveStack, "EzrealPassive");
+                var _buff = UIManage.instant.uiStatus.CheckBuff(baseStatus.imageCharater.allSkills.Last(), passiveStack, "EzrealPassive");
                 yield return new WaitWhile(() =>
                 {
                     timePassive -= Time.deltaTime * 1;
@@ -76,7 +74,7 @@
                     return timePassive > 0;
                 });
                 UIManage.instant.uiStatus.DeleteBuff(_buff);
-                increaseStatus -= new Status { aspd = IncreaseAspd * passiveStack };
+                temporaryStatus -= new Status { aspd = IncreaseAspd * passiveStack };
                 passiveStack = 0;
             }
         }

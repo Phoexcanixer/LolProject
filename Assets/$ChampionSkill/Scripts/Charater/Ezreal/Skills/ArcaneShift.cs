@@ -1,6 +1,7 @@
 ﻿namespace Charater.Ezreal.Skill
 {
     using System.Collections;
+    using System.Linq;
     using UnityEngine;
     public class ArcaneShift : BaseSkill
     {
@@ -40,7 +41,9 @@
             {
                 ArcaneShiftMissile _arcanMiss = Instantiate(arcaneShiftMissile, spawnPointSkill.position, Quaternion.identity).AddComponent<ArcaneShiftMissile>();
                 _arcanMiss.eSidePlayer = eSidePlayer;
-                _arcanMiss.target = hitColliders[0].transform;
+
+                float _minDist = hitColliders.Min(item => Vector3.Distance(item.transform.position, transform.position));
+                _arcanMiss.target = hitColliders.Where(item => Vector3.Distance(item.transform.position, transform.position) <= _minDist).First().transform;
             }
         }
     }

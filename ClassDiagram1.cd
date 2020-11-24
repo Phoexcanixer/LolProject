@@ -1,0 +1,213 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Charater.AnimationController" Collapsed="true">
+    <Position X="6.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAABAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Assets\$ChampionSkill\Scripts\Charater\$BaseScript\AnimationController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Charater.AutoAtk" Collapsed="true">
+    <Position X="12.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAiAAAAAAIAAIAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Assets\$ChampionSkill\Scripts\Charater\$BaseScript\AutoAtk.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Charater.BaseStatusCharaterController" Collapsed="true">
+    <Position X="8.5" Y="3.5" Width="1.5" />
+    <AssociationLine Name="decreaseStatus" Type="Status" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="9.5" Y="3.5" />
+        <Point X="9.432" Y="3.5" />
+        <Point X="9.432" Y="3.125" />
+        <Point X="3.156" Y="3.125" />
+        <Point X="3.156" Y="2.812" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAYgAASAAEAABBAAAGI4AAAAAAIWDACAAApAACAAAEA=</HashCode>
+      <FileName>Assets\$ChampionSkill\Scripts\Charater\$BaseScript\BaseStatusCharaterController.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="abillity" />
+      <Field Name="baseStatus" />
+      <Field Name="baseStatusChar" />
+      <Field Name="decreaseStatus" />
+      <Field Name="increaseStatus" />
+      <Field Name="skillStatus" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Charater.CharacterControllers" Collapsed="true">
+    <Position X="5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQEAAAAAqgAAAAAAAAIACAAAAQAIAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Assets\$ChampionSkill\Scripts\Charater\$BaseScript\CharacterControllers.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dummy.DummyManage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Assets\$ChampionSkill\Scripts\Charater\$BaseScript\DummyManage.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Charater.Ezreal.Skill.ArcaneShift" Collapsed="true">
+    <Position X="8.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAABAAABAAAABIAAAAAgABAAAAAAEAAEA=</HashCode>
+      <FileName>Assets\$ChampionSkill\Scripts\Charater\Ezreal\Skills\ArcaneShift.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Charater.Ezreal.Skill.ArcaneShiftMissile" Collapsed="true">
+    <Position X="10.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Assets\$ChampionSkill\Scripts\Charater\Ezreal\Skills\ArcaneShift.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Charater.Ezreal.Skill.EssenceFlux" Collapsed="true">
+    <Position X="8.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAQAAAAQAAAEA=</HashCode>
+      <FileName>Assets\$ChampionSkill\Scripts\Charater\Ezreal\Skills\EssenceFlux.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Charater.Ezreal.Skill.EssenceFluxInCharater" Collapsed="true">
+    <Position X="10.25" Y="6.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Assets\$ChampionSkill\Scripts\Charater\Ezreal\Skills\EssenceFlux.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Charater.Ezreal.Skill.MyticShort" Collapsed="true">
+    <Position X="8.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAEA=</HashCode>
+      <FileName>Assets\$ChampionSkill\Scripts\Charater\Ezreal\Skills\MyticShort.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Charater.Ezreal.Skill.TrueShotBarrage" Collapsed="true">
+    <Position X="8.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAEA=</HashCode>
+      <FileName>Assets\$ChampionSkill\Scripts\Charater\Ezreal\Skills\TrueShotBarrage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Charater.Ezreal.EzrealController" Collapsed="true">
+    <Position X="8.5" Y="4.5" Width="1.5" />
+    <InheritanceLine Type="Charater.BaseStatusCharaterController" ManuallyRouted="true" FixedFromPoint="true">
+      <Path>
+        <Point X="9.25" Y="4.191" />
+        <Point X="9.25" Y="4.5" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>IAQAAACIAAAAAAAAACAgAAAgAAAAAAAgAArQAAAAAEA=</HashCode>
+      <FileName>Assets\$ChampionSkill\Scripts\Charater\Ezreal\EzrealController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Charater.Ezreal.EzrealAuto" Collapsed="true">
+    <Position X="10.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Assets\$ChampionSkill\Scripts\Charater\Ezreal\EzrealController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KeyControl.DefaultKeyController" Collapsed="true">
+    <Position X="2.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAACAAAAABAAAAAAAAAAAAAAAQAEAAAA=</HashCode>
+      <FileName>Assets\$ChampionSkill\Scripts\KeyController\DefaultKeyController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="View.UICharater" Collapsed="true">
+    <Position X="2.25" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAgAAQBBAAACAAAEEEAAgQBEAEEAAAABABAIAEA=</HashCode>
+      <FileName>Assets\$ChampionSkill\Scripts\UI\UICharater.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="View.UIManage" Collapsed="true">
+    <Position X="2.25" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACCAAAAAAAAAAQQAIAAAAAAAAAAAAAAAAMA=</HashCode>
+      <FileName>Assets\$ChampionSkill\Scripts\UI\UIManage.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="uiCharater" />
+      <Field Name="uiStatus" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="View.UIStatus" Collapsed="true">
+    <Position X="0.5" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAACAAAAAgAAAAQAABAAAACAA=</HashCode>
+      <FileName>Assets\$ChampionSkill\Scripts\UI\UIStatus.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="State.BaseStatus" Collapsed="true">
+    <Position X="8.25" Y="0.5" Width="1.5" />
+    <NestedTypes>
+      <Struct Name="State.BaseStatus.ImageCharater" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\$ChampionSkill\Scripts\Status\BaseStatus.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAgAQAAAAAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\$ChampionSkill\Scripts\Status\BaseStatus.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="baseStatusCharater" />
+      <Field Name="skillStatus" />
+    </ShowAsAssociation>
+  </Class>
+  <Struct Name="Status" Collapsed="true">
+    <Position X="2" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAACAQAIIAAAAEAAQAEEgggAAAIABAIAgARaAAAAgAA=</HashCode>
+      <FileName>Assets\$ChampionSkill\Scripts\AllClass.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="Abillity" Collapsed="true">
+    <Position X="4" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAABAAAAAQAAAAAIAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\$ChampionSkill\Scripts\AllClass.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SkillStatus" Collapsed="true">
+    <Position X="6" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\$ChampionSkill\Scripts\AllClass.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Interface Name="ISide" Collapsed="true">
+    <Position X="10" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\$ChampionSkill\Scripts\AllClass.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ICaster" Collapsed="true">
+    <Position X="12" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\$ChampionSkill\Scripts\AllClass.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="ESidePlayer" Collapsed="true">
+    <Position X="8" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAABEA=</HashCode>
+      <FileName>Assets\$ChampionSkill\Scripts\AllClass.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

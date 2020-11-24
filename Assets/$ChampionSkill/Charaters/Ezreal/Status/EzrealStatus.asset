@@ -55,8 +55,8 @@ MonoBehaviour:
   imageCharater:
     iconCharater: {fileID: 21300000, guid: 24fbdc6a309aa174bab6d7bba7ab179c, type: 3}
     allSkills:
-    - {fileID: 21300000, guid: fca1606deb4b15e4a8163a2e68f03de6, type: 3}
     - {fileID: 21300000, guid: 2f1556e3027e3bf40a467e55f3da56c6, type: 3}
     - {fileID: 21300000, guid: f2f79afdfd04b914ab6ba445bc42204f, type: 3}
     - {fileID: 21300000, guid: e2bf3d4c01c195f4a90d48f7b4deec91, type: 3}
     - {fileID: 21300000, guid: a81b7bfbabed4ff4ba449e6c8aedadcc, type: 3}
+    - {fileID: 21300000, guid: fca1606deb4b15e4a8163a2e68f03de6, type: 3}

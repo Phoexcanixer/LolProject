@@ -1,6 +1,5 @@
 ﻿namespace Charater
 {
-    using Common.Cast;
     using State;
     using System.Collections;
     using System.Collections.Generic;
@@ -13,8 +12,8 @@
         public GameObject atkObject;
         public Transform spawnPointSkill;
 
-        public Status TotalStatus { get => baseStatusChar + increaseStatus + decreaseStatus; }
-        public Status decreaseStatus, increaseStatus, baseStatusChar;
+        public Status TotalStatus { get => baseStatusChar + increaseStatus + temporaryStatus; }
+        public Status temporaryStatus, increaseStatus, baseStatusChar;
 
         public Abillity abillity;
         public SkillStatus skillStatus;
@@ -65,7 +64,7 @@
         }
         protected void CastSkill(int slot, float timeCast, float mpCost)
         {
-            decreaseStatus -= new Status { mp = mpCost };
+            temporaryStatus -= new Status { mp = mpCost };
             UIManage.instant.uiCharater.SetCastSkill(timeCast, skillStatus.detailSkills[slot].nameSkill, TotalStatus.mp);
         }
 
