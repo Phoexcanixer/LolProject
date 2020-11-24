@@ -932,7 +932,7 @@ MonoBehaviour:
   baseStatus: {fileID: 11400000, guid: d8ec702c84f5c9d42a4a4d4e1671a414, type: 2}
   atkObject: {fileID: 3453120856508770959, guid: 3540259c4c9c1bd4caa2f5ec3f58568c, type: 3}
   spawnPointSkill: {fileID: 2083738218}
-  decreaseStatus:
+  temporaryStatus:
     hp: 0
     mp: 0
     atk: 0
@@ -1006,7 +1006,7 @@ MonoBehaviour:
     - 0
     - 0
     - 0
-    isAtk: 1
+    isAtk: 0
   skillStatus:
     detailSkills: []
   allSkills:
@@ -1014,8 +1014,6 @@ MonoBehaviour:
   - {fileID: 8378186977006466123, guid: 96dc32c0dfd2c3e42889e8f31da8ed53, type: 3}
   - {fileID: 4453947419564854283, guid: bfa3a1521fb6cc4409234d0b2c8f7a99, type: 3}
   - {fileID: -2198860373976152038, guid: 52b222b793fa2264386b36ba354275ad, type: 3}
-  timePassive: 0
-  passiveStack: 0
 --- !u!1 &210483560
 GameObject:
   m_ObjectHideFlags: 0

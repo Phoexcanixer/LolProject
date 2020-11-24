@@ -24,7 +24,7 @@
             if (other.GetComponent<ISide>() != null)
             {
                 ISide _iSide = other.GetComponent<ISide>();
-                if (_iSide.eSidePlayer != eSidePlayer)
+                if (_iSide != null)
                 {
                     EssenceFluxInCharater _essent = other.GetComponentInChildren<EssenceFluxInCharater>();
                     if (_essent != null)

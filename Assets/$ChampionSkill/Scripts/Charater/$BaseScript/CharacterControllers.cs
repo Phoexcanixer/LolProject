@@ -24,11 +24,7 @@
                 _animationController.Idle();
             };
         }
-        void Start()
-        {
-            View.UIManage.instant.CallBackIconAnsSkills = () => (_baseStatusCharaterController.TotalStatus, _baseStatusCharaterController.baseStatus.imageCharater);
-
-        }
+        void Start() => View.UIManage.instant.CallBackIconAnsSkills = () => (_baseStatusCharaterController.TotalStatus, _baseStatusCharaterController.baseStatus.imageCharater);
         void Update()
         {
             if (Input.GetKeyDown(DefaultKeyController.move))

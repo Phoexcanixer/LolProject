@@ -11,12 +11,13 @@
 
     public class EzrealController : BaseStatusCharaterController
     {
-        public static Action CallBackPassive;
-        [Header("EzrealIncrease")]
-        public float timePassive;
-        public int passiveStack;
+        // EzrealIncrease //
+        public static Action CallBackPassive { get; set; }
         public float IncreaseAspd { get => (3 * baseStatusChar.aspd) / 100; }
-        Coroutine _timePassive = null;
+        public Coroutine TimePassiveCrt { get; set; }
+
+        float _timePassive;
+        int _passiveStack;
         protected override void Awake()
         {
             base.Awake();
@@ -34,7 +35,6 @@
                     {
                         EzrealAuto _ezAuto = Instantiate(atkObject, spawnPointSkill.position, Quaternion.identity).AddComponent<EzrealAuto>();
                         _ezAuto.eSidePlayer = eSidePlayer;
-
                         float _minDist = hitColliders.Min(item => Vector3.Distance(item.transform.position, transform.position));
                         _ezAuto.target = hitColliders.Where(item => Vector3.Distance(item.transform.position, transform.position) <= _minDist).First().transform;
                         transform.LookAt(_ezAuto.target);
@@ -48,34 +48,35 @@
             if (abillity.delayAtk > 0)
                 abillity.delayAtk -= Time.deltaTime;
         }
+
         public override void SkillPassive(int slot = 5)
         {
             Status _status = new Status();
-            if (passiveStack + 1 <= 5)
+            if (_passiveStack + 1 <= 5)
             {
-                passiveStack++;
+                _passiveStack++;
                 _status = new Status { aspd = IncreaseAspd };
             }
 
-            if (_timePassive != null)
-                StopCoroutine(_timePassive);
+            if (TimePassiveCrt != null)
+                StopCoroutine(TimePassiveCrt);
 
-            _timePassive = StartCoroutine(IEPassive());
+            TimePassiveCrt = StartCoroutine(IEPassive());
 
             IEnumerator IEPassive()
             {
                 temporaryStatus += _status;
-                timePassive = 10;
-                var _buff = UIManage.instant.uiStatus.CheckBuff(baseStatus.imageCharater.allSkills.Last(), passiveStack, "EzrealPassive");
+                _timePassive = 10;
+                var _buff = UIManage.instant.uiStatus.CheckBuff(baseStatus.imageCharater.allSkills.Last(), _passiveStack, "EzrealPassive");
                 yield return new WaitWhile(() =>
                 {
-                    timePassive -= Time.deltaTime * 1;
-                    _buff.UpdateTImeBuff(timePassive / 10);
-                    return timePassive > 0;
+                    _timePassive -= Time.deltaTime * 1;
+                    _buff.UpdateTImeBuff(_timePassive / 10);
+                    return _timePassive > 0;
                 });
                 UIManage.instant.uiStatus.DeleteBuff(_buff);
-                temporaryStatus -= new Status { aspd = IncreaseAspd * passiveStack };
-                passiveStack = 0;
+                temporaryStatus -= new Status { aspd = IncreaseAspd * _passiveStack };
+                _passiveStack = 0;
             }
         }
 
@@ -174,9 +175,9 @@
     {
         public override void OnTriggerEnter(Collider other)
         {
-            if (other.GetComponent<ISide>() != null)
+            ISide _iSide = other.GetComponent<ISide>();
+            if (_iSide != null)
             {
-                ISide _iSide = other.GetComponent<ISide>();
                 if (_iSide.eSidePlayer != eSidePlayer)
                 {
                     EssenceFluxInCharater _essent = other.GetComponentInChildren<EssenceFluxInCharater>();

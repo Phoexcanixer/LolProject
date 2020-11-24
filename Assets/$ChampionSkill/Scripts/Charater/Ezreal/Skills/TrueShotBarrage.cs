@@ -19,9 +19,9 @@
         }
         protected override void OnTriggerEnter(Collider other)
         {
-            if (other.GetComponent<ISide>() != null)
+            ISide _iSide = other.GetComponent<ISide>();
+            if (_iSide != null)
             {
-                ISide _iSide = other.GetComponent<ISide>();
                 if (_iSide.eSidePlayer != eSidePlayer)
                 {
                     EssenceFluxInCharater _essent = other.GetComponentInChildren<EssenceFluxInCharater>();
