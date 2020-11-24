@@ -16,16 +16,20 @@
                 yield return null;
             }
             Destroy(gameObject);
-            
         }
-        protected override void OnParticleCollision(GameObject other)
+        protected override void OnTriggerEnter(Collider other)
         {
             if (other.GetComponent<ISide>() != null)
             {
                 ISide _iSide = other.GetComponent<ISide>();
                 if (_iSide.eSidePlayer != eSidePlayer)
                 {
+                    EssenceFluxInCharater _essent = other.GetComponentInChildren<EssenceFluxInCharater>();
+                    if (_essent != null)
+                        Destroy(_essent.gameObject);
+
                     Debug.Log($"other: {other.name}");
+                    EzrealController.CallBackPassive?.Invoke();
                     Destroy(gameObject);
                 }
             }

@@ -1,0 +1,193 @@
+﻿namespace Charater.Ezreal
+{
+    using KeyControl;
+    using UnityEngine;
+    using Common.Cast;
+    using Charater.Ezreal.Skill;
+    using System;
+    using System.Collections;
+    using View;
+    using System.Collections.Generic;
+
+    public class EzrealController : BaseStatusCharaterController
+    {
+        public static Action CallBackPassive;
+
+        [Header("EzrealIncrease")]
+        public float timePassive;
+        public int passiveStack;
+        public Sprite[] allIconBuff;
+        public float IncreaseAspd { get => (3 * baseStatusChar.aspd) / 100; }
+
+        Coroutine _timePassive = null;
+
+        protected override void Awake()
+        {
+            base.Awake();
+            CallBackPassive = () => SkillPassive();
+            eSidePlayer = ESidePlayer.RedSide;
+        }
+        public override void AutoAtk()
+        {
+            if (abillity.isAtk)
+            {
+                if (abillity.delayAtk <= 0 && abillity.delaySkill <= 0)
+                {
+                    Collider[] hitColliders = Physics.OverlapSphere(transform.position, 5, 1 << 2);
+                    if (hitColliders.Length > 0)
+                    {
+                        EzrealAuto _ezAuto = Instantiate(atkObject, spawnPointSkill.position, Quaternion.identity).AddComponent<EzrealAuto>();
+                        _ezAuto.eSidePlayer = eSidePlayer;
+                        _ezAuto.target = hitColliders[0].transform;
+                        transform.LookAt(_ezAuto.target);
+                        abillity.delayAtk = baseStatusChar.atkRate;
+                    }
+                    else
+                        abillity.isAtk = false;
+                }
+            }
+
+            if (abillity.delayAtk > 0)
+                abillity.delayAtk -= Time.deltaTime;
+        }
+        public override void SkillPassive(int slot = 5)
+        {
+            Status _status = new Status();
+            if (passiveStack + 1 <= 5)
+            {
+                passiveStack++;
+                _status = new Status { aspd = IncreaseAspd };
+            }
+
+            if (_timePassive != null)
+                StopCoroutine(_timePassive);
+
+            _timePassive = StartCoroutine(IEPassive());
+
+            IEnumerator IEPassive()
+            {
+                increaseStatus += _status;
+                timePassive = 10;
+                var _buff = UIManage.instant.uiStatus.CheckBuff(allIconBuff[0], passiveStack, "EzrealPassive");
+                yield return new WaitWhile(() =>
+                {
+                    timePassive -= Time.deltaTime * 1;
+                    _buff.UpdateTImeBuff(timePassive / 10);
+                    return timePassive > 0;
+                });
+                UIManage.instant.uiStatus.DeleteBuff(_buff);
+                increaseStatus -= new Status { aspd = IncreaseAspd * passiveStack };
+                passiveStack = 0;
+            }
+        }
+
+        public override void SkillFirst(int slot = 0)
+        {
+            if (skillStatus.detailSkills[slot].costSkills <= TotalStatus.mp && abillity.coundDownSkills[slot] <= 0)
+            {
+                this.CastSkill(skillStatus.detailSkills[slot].castSkill, () =>
+                {
+                    CheckRotate();
+                    abillity.delaySkill = timeCaster + skillStatus.detailSkills[slot].castSkill;
+                    CountDown(slot);
+                    CastSkill(slot, abillity.delaySkill, skillStatus.detailSkills[slot].costSkills);
+                }, () => Instantiate(allSkills[slot], spawnPointSkill.position, spawnPointSkill.rotation).eSidePlayer = eSidePlayer, t => UpdateCastSkill(t));
+            }
+            else
+                Debug.Log($"No MP");
+        }
+
+        public override void SkillSecond(int slot = 1)
+        {
+            if (skillStatus.detailSkills[slot].costSkills <= TotalStatus.mp && abillity.coundDownSkills[slot] <= 0)
+            {
+                this.CastSkill(skillStatus.detailSkills[slot].castSkill, () =>
+                {
+                    CheckRotate();
+                    abillity.delaySkill = timeCaster + skillStatus.detailSkills[slot].castSkill;
+                    CountDown(slot);
+                    CastSkill(slot, abillity.delaySkill, skillStatus.detailSkills[slot].costSkills);
+                }, () => Instantiate(allSkills[slot], spawnPointSkill.position, spawnPointSkill.rotation).eSidePlayer = eSidePlayer, t => UpdateCastSkill(t));
+            }
+            else
+                Debug.Log($"No MP");
+        }
+
+        public override void SkillThird(int slot = 2)
+        {
+            if (skillStatus.detailSkills[slot].costSkills <= TotalStatus.mp && abillity.coundDownSkills[slot] <= 0)
+            {
+                this.CastSkill(skillStatus.detailSkills[slot].castSkill, () =>
+                {
+                    abillity.delaySkill = timeCaster + skillStatus.detailSkills[slot].castSkill;
+                    CountDown(slot);
+                    CastSkill(slot, abillity.delaySkill, skillStatus.detailSkills[slot].costSkills);
+                }, () =>
+                {
+                    Vector3 _pos = CheckRotate();
+                    var _skill = (Skill.ArcaneShift)Instantiate(allSkills[slot], transform.position, transform.rotation);
+                    _skill.eSidePlayer = eSidePlayer;
+                    _skill.pointPos = _pos;
+                    _skill.player = transform;
+                    _skill.spawnPointSkill = spawnPointSkill;
+                    abillity.delaySkill = timeCaster;
+                }, t => UpdateCastSkill(t));
+            }
+            else
+                Debug.Log($"No MP");
+        }
+
+        public override void SkillUltimate(int slot = 3)
+        {
+            if (skillStatus.detailSkills[slot].costSkills <= TotalStatus.mp && abillity.coundDownSkills[slot] <= 0)
+            {
+                this.CastSkill(skillStatus.detailSkills[slot].castSkill, () =>
+                {
+                    CheckRotate();
+                    abillity.delaySkill = timeCaster + skillStatus.detailSkills[slot].castSkill;
+                    CountDown(slot);
+                    CastSkill(slot, abillity.delaySkill, skillStatus.detailSkills[slot].costSkills);
+                }, () => Instantiate(allSkills[slot], spawnPointSkill.position, spawnPointSkill.rotation).eSidePlayer = eSidePlayer, t => UpdateCastSkill(t));
+            }
+            else
+                Debug.Log($"No MP");
+        }
+
+        protected override void Update()
+        {
+            if (Input.GetKeyDown(DefaultKeyController.allKeySkills[0]) && abillity.delaySkill <= 0)
+                SkillFirst();
+            if (Input.GetKeyDown(DefaultKeyController.allKeySkills[1]) && abillity.delaySkill <= 0)
+                SkillSecond();
+            if (Input.GetKeyDown(DefaultKeyController.allKeySkills[2]) && abillity.delaySkill <= 0)
+                SkillThird();
+            if (Input.GetKeyDown(DefaultKeyController.allKeySkills[3]) && abillity.delaySkill <= 0)
+                SkillUltimate();
+
+            AutoAtk();
+
+            if (abillity.delaySkill > 0)
+                abillity.delaySkill -= Time.deltaTime;
+
+        }
+    }
+
+    public class EzrealAuto : AutoAtk
+    {
+        public override void OnTriggerEnter(Collider other)
+        {
+            if (other.GetComponent<ISide>() != null)
+            {
+                ISide _iSide = other.GetComponent<ISide>();
+                if (_iSide.eSidePlayer != eSidePlayer)
+                {
+                    EssenceFluxInCharater _essent = other.GetComponentInChildren<EssenceFluxInCharater>();
+                    if (_essent != null)
+                        Destroy(_essent.gameObject);
+
+                    Destroy(gameObject);
+                }
+            }
+        }
+    }
+}

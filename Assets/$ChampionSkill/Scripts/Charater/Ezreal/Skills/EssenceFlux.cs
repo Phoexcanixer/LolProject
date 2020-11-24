@@ -5,6 +5,7 @@
 
     public class EssenceFlux : BaseSkill
     {
+        public GameObject EssenceFluxInCharater;
         void Awake() => StartCoroutine(IEMove());
         IEnumerator IEMove()
         {
@@ -18,20 +19,38 @@
             Destroy(gameObject);
 
         }
-        protected override void OnParticleCollision(GameObject other)
+        protected override void OnTriggerEnter(Collider other)
         {
-            StopAllCoroutines();
             if (other.GetComponent<ISide>() != null)
             {
                 ISide _iSide = other.GetComponent<ISide>();
                 if (_iSide.eSidePlayer != eSidePlayer)
                 {
+                    EssenceFluxInCharater _essent = other.GetComponentInChildren<EssenceFluxInCharater>();
+                    if (_essent != null)
+                        Destroy(_essent.gameObject);
+
                     Debug.Log($"other: {other.name}");
+                    EzrealController.CallBackPassive?.Invoke();
+                    Instantiate(EssenceFluxInCharater, other.transform).AddComponent<EssenceFluxInCharater>();
                     Destroy(gameObject);
-                    
                 }
             }
         }
 
+    }
+    public class EssenceFluxInCharater : MonoBehaviour
+    {
+        void Awake() => StartCoroutine(IELifeTime());
+        IEnumerator IELifeTime()
+        {
+            float _time = 5f;
+            while (_time > 0)
+            {
+                _time -= Time.deltaTime * 1;
+                yield return null;
+            }
+            Destroy(gameObject);
+        }
     }
 }

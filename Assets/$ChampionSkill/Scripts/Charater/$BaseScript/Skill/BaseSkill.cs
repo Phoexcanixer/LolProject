@@ -3,5 +3,5 @@
 public abstract class BaseSkill : MonoBehaviour, ISide
 {
     public ESidePlayer eSidePlayer { get; set; }
-    protected virtual void OnParticleCollision(GameObject other) { }
+    protected virtual void OnTriggerEnter(Collider other) { }
 }
