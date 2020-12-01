@@ -8,7 +8,7 @@
     using System.Linq;
     using UnityEngine;
     using View;
-
+    
     public class EzrealController : BaseStatusCharaterController
     {
         // EzrealIncrease //
